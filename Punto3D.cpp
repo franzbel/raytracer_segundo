@@ -3,7 +3,7 @@ Punto3D::Punto3D(): x(0), y(0), z(0)
 {}
 Punto3D::Punto3D(double n): x(n), y(n), z(n)
 {}
-Punto3D::Punto3D(double v_x, double v_y, double v_z)
+Punto3D::Punto3D(double v_x, double v_y, double v_z): x(v_x), y(v_y), z(v_z)
 {}
 Punto3D::Punto3D(const Punto3D& p): x(p.x), y(p.y), z(p.z)
 {}

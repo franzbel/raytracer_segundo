@@ -12,7 +12,7 @@ int main()
     
     // ESFERA
     Punto3D centro(0.0, 0.0, 0.0);
-    double radio = 50;
+    double radio = 20;
     Esfera esfera(centro, radio);   
     // VIEWPLANE
     int hres = 400;
@@ -37,12 +37,13 @@ int main()
             double y_o = vp.s * ( fil - vp.vres/2 + 0.5 );
             double z_o = 100;
             Punto3D origen(x_o, y_o, z_o);
+          
             Rayo rayo(origen, direccion);
             if (esfera.hayImpacto(rayo))
             {
                 // PINTAR DE ROJO
                 pixeles[fil*width+col].r = 1.0;
-                pixeles[fil*width+col].g = 1.0;
+                pixeles[fil*width+col].g = 0.0;
                 pixeles[fil*width+col].b = 0.0;
             }
             else
@@ -57,41 +58,3 @@ int main()
     savebmp("img.bmp", width, height, dpi, pixeles);
     return 0;
 }
-
-// #include "Utilitarios.h"
-
-// main()
-// {
-//     int dpi = 72;
-//     int width = 840;
-//     int height = 380;
-//     int n = width * height;
-//     ColorRGB* pixeles = new ColorRGB[n];
-    
-    
-    
-//     for(int fil = 0; fil  < height; fil++)
-//     {
-//       for( int col = 0; col < width; col++)
-//       {
-//           if ( col < width / 2)
-//           {
-//             pixeles[fil*width+col].r = 1.0;
-//             pixeles[fil*width+col].g = 0;
-//             pixeles[fil*width+col].b = 0.0;
-//           }
-//           else
-//           {
-//             pixeles[fil*width+col].r = 0;
-//             pixeles[fil*width+col].g = 0;
-//             pixeles[fil*width+col].b = 1.0;
-//           }
-        
-//       }
-//     }
-
-
-
-//     savebmp("img.bmp", width, height, dpi, pixeles);
-//     return 0;
-// }
