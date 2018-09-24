@@ -4,8 +4,12 @@ using namespace std;
 #include "Esfera.h"
 #include "ViewPlane.h"
 #include "Rayo.h"
+
+#include "Utilitarios.h"
+
 int main()
 {
+    
     // ESFERA
     Punto3D centro(0.0, 0.0, 0.0);
     double radio = 50;
@@ -16,6 +20,13 @@ int main()
     double s = 1.0;
     ViewPlane vp(hres, vres, s);
 
+    // UTILITARIO PARA GUARDAR IMAGEN -------------------------------------------------------------------
+    int dpi = 72;
+    int width = vp.hres;
+    int height = vp.vres;
+    int n = width * height;
+    ColorRGB* pixeles = new ColorRGB[n];
+    // --------------------------------------------------------------------------------------------------
     for(int fil = 0; fil < vp.vres; fil++)
     {
         for ( int col = 0; col < vp.hres; col++) 
@@ -30,13 +41,57 @@ int main()
             if (esfera.hayImpacto(rayo))
             {
                 // PINTAR DE ROJO
+                pixeles[fil*width+col].r = 1.0;
+                pixeles[fil*width+col].g = 1.0;
+                pixeles[fil*width+col].b = 0.0;
             }
             else
             {
                 // PINTAR DE NEGRO
+                pixeles[fil*width+col].r = 0.0;
+                pixeles[fil*width+col].g = 0.0;
+                pixeles[fil*width+col].b = 0.0;
             }
         }
     }    
-
+    savebmp("img.bmp", width, height, dpi, pixeles);
     return 0;
 }
+
+// #include "Utilitarios.h"
+
+// main()
+// {
+//     int dpi = 72;
+//     int width = 840;
+//     int height = 380;
+//     int n = width * height;
+//     ColorRGB* pixeles = new ColorRGB[n];
+    
+    
+    
+//     for(int fil = 0; fil  < height; fil++)
+//     {
+//       for( int col = 0; col < width; col++)
+//       {
+//           if ( col < width / 2)
+//           {
+//             pixeles[fil*width+col].r = 1.0;
+//             pixeles[fil*width+col].g = 0;
+//             pixeles[fil*width+col].b = 0.0;
+//           }
+//           else
+//           {
+//             pixeles[fil*width+col].r = 0;
+//             pixeles[fil*width+col].g = 0;
+//             pixeles[fil*width+col].b = 1.0;
+//           }
+        
+//       }
+//     }
+
+
+
+//     savebmp("img.bmp", width, height, dpi, pixeles);
+//     return 0;
+// }
