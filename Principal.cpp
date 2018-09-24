@@ -42,9 +42,9 @@ int main()
             if (esfera.hayImpacto(rayo))
             {
                 // PINTAR DE ROJO
-                pixeles[fil*width+col].r = 1.0;
-                pixeles[fil*width+col].g = 0.0;
-                pixeles[fil*width+col].b = 0.0;
+                pixeles[fil*width+col].r = esfera.obtenerColor().r;
+                pixeles[fil*width+col].g = esfera.obtenerColor().g;
+                pixeles[fil*width+col].b = esfera.obtenerColor().b;
             }
             else
             {

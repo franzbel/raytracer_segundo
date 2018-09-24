@@ -2,7 +2,11 @@
 #include<iostream>
 using namespace std;
 Esfera::Esfera(Punto3D v_c, double v_r):c( v_c), r( v_r)
-{ }
+{ 
+    color.r = 1.0;
+    color.g = 1.0;
+    color.b = 0.0;
+}
 Esfera::~Esfera(){}
 bool Esfera::hayImpacto(const Rayo& rayo) const
 {
@@ -19,4 +23,13 @@ bool Esfera::hayImpacto(const Rayo& rayo) const
     {
         return true;
     }
+}
+
+ColorRGB Esfera::obtenerColor()
+{
+    ColorRGB c;
+    c.r = color.r;
+    c.g = color.g;
+    c.b = color.b;
+    return  c;
 }
