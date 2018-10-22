@@ -9,6 +9,7 @@ using namespace std;
 #include "Rayo.h"
 #include "LuzPuntual.h"
 #include "Utilitarios.h"
+#include "Plano.h"
 
 double acotar(double n)
 {
@@ -73,9 +74,15 @@ int main()
     Esfera esfera2(centro2, radio2);   
     esfera2.establecerColor(0.23, 1.0, 0.80);
 
+    Punto3D p(0, -209, 0);
+    Vector3D q(0.0, -1.0, 0);
+    Plano plano(p, q.hat());
+    plano.establecerColor(0.0, 0.0, 0.0);
+
     vector<ObjetoGeometrico*> escena;
     escena.push_back(&esfera1);
     escena.push_back(&esfera2);
+    escena.push_back(&plano);
 
     ColorRGB color_pixel;
     
