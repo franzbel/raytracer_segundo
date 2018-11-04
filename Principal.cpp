@@ -10,7 +10,7 @@ using namespace std;
 #include "LuzPuntual.h"
 #include "Utilitarios.h"
 #include "Plano.h"
-
+#include "Triangulo.h"
 double acotar(double n)
 {
     if ( n > 1.0)
@@ -79,11 +79,17 @@ int main()
     Plano plano(p, q.hat());
     plano.establecerColor(0.0, 0.0, 0.0);
 
+    Punto3D A(400,0,-600);
+    Punto3D B(200,300,-300);
+    Punto3D C(0, 0, -600);
+    Triangulo t(A, B, C);
+    t.establecerColor(1.0,0.0,0.0);
+
     vector<ObjetoGeometrico*> escena;
     escena.push_back(&esfera1);
     escena.push_back(&esfera2);
-    escena.push_back(&plano);
-
+    // escena.push_back(&plano);
+    escena.push_back(&t);
     ColorRGB color_pixel;
     
 
